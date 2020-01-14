@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neeker
+spec:
+  strategy:    
+    rollingUpdate:
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: neeker
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: neeker
+    spec:
+      containers:
+      - name: neeker
+        imagePullPolicy: Never
+        image: neeker
+        ports:
+        - containerPort: 4000
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
