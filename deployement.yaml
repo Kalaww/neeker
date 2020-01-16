@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: neeker
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
@@ -19,9 +19,16 @@ spec:
       - name: neeker
         imagePullPolicy: Never
         image: neeker
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP 
         ports:
         - containerPort: 4000
+        - containerPort: 9001
+        - containerPort: 4369
         resources:
           limits:
             memory: "128Mi"
-            cpu: "500m"
+            cpu: "100m"

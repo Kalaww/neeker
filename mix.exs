@@ -29,7 +29,8 @@ defmodule Neeker.MixProject do
   defp releases do
     [
       neeker: [
-        include_executables_for: [:unix]
+        include_executables_for: [:unix],
+        cookie: "neeker"
       ]
     ]
   end

@@ -2,10 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: neeker
+  labels:
+    app: neeker
 spec:
-  type: ClusterIP
+  # type: ClusterIP
   selector:
     app: neeker
   ports:
   - port: 4010
     targetPort: 4000
+  clusterIP: None
